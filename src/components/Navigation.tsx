@@ -54,7 +54,7 @@ export default function Navigation() {
         aria-label="Primary"
         className={`w-full max-w-4xl rounded-[1.75rem] border transition-all duration-300 ${
           scrolled || open
-            ? "border-line bg-paper/95 shadow-soft backdrop-blur-md"
+            ? "border-line bg-white/80 shadow-soft backdrop-blur-md"
             : "border-transparent bg-transparent"
         }`}
       >
@@ -76,7 +76,7 @@ export default function Navigation() {
                     href={n.href}
                     aria-current={isActive ? "true" : undefined}
                     className={`relative rounded-full px-3 py-1.5 text-sm transition-colors ${
-                      isActive ? "bg-wash font-medium text-cobalt-deep" : "text-ink-2 hover:bg-ink/5 hover:text-ink"
+                      isActive ? "bg-ink text-white" : "text-ink-2 hover:bg-black/5 hover:text-ink"
                     }`}
                   >
                     {n.label}
@@ -88,7 +88,7 @@ export default function Navigation() {
 
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-paper md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white md:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -114,7 +114,7 @@ export default function Navigation() {
                     onClick={() => setOpen(false)}
                     aria-current={active === n.id ? "true" : undefined}
                     className={`block rounded-2xl px-4 py-3 text-base ${
-                      active === n.id ? "bg-wash font-medium text-cobalt-deep" : "text-ink hover:bg-ink/5"
+                      active === n.id ? "bg-ink text-white" : "text-ink hover:bg-black/5"
                     }`}
                   >
                     {n.label}

@@ -1,48 +1,56 @@
 import { profile } from "@/lib/data";
-import Section from "./Section";
+import Reveal from "./Reveal";
+import SectionHeading from "./SectionHeading";
 import IdCard from "./IdCard";
 
 export default function About() {
   return (
-    <Section id="about" title="About">
-      <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_19rem] lg:gap-10">
-        <div>
-          <p className="text-[clamp(1.4rem,2.4vw,2rem)] font-medium leading-[1.2] tracking-tight">
-            {profile.aboutLead}
-          </p>
+    <section id="about" aria-labelledby="about-heading" className="section">
+      <div className="container-x">
+        <SectionHeading number="01" label="About" id="about-heading">
+          A little <span className="accent">about me.</span>
+        </SectionHeading>
 
-          <div className="mt-8 space-y-5 leading-relaxed text-ink-2">
-            {profile.aboutParagraphs.map((p) => (
-              <p key={p}>{p}</p>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <h3 className="font-semibold">Languages</h3>
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {profile.languages.map((l) => (
-                <li key={l.name} className="chip">
-                  <span className="mr-2 font-semibold text-ink">{l.name}</span>
-                  {l.level}
-                </li>
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
+          <Reveal>
+            <p className="text-xl leading-snug tracking-tight sm:text-2xl">{profile.aboutLead}</p>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-ink-2">
+              {profile.aboutParagraphs.map((p) => (
+                <p key={p}>{p}</p>
               ))}
-            </ul>
-          </div>
+            </div>
+            <div className="mt-8">
+              <h3 className="label mb-3">Languages</h3>
+              <ul className="flex flex-wrap gap-2">
+                {profile.languages.map((l) => (
+                  <li key={l.name} className="chip">
+                    <span className="font-medium">{l.name}</span>
+                    <span className="mx-2 opacity-60">·</span>
+                    {l.level}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="-mt-2 lg:-mt-10">
+              <IdCard />
+            </div>
+          </Reveal>
         </div>
 
-        <div className="-mt-2 lg:-mt-6">
-          <IdCard />
-        </div>
+        <ul className="mt-14 grid gap-3 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3">
+          {profile.aboutHighlights.map((h, i) => (
+            <Reveal as="li" key={h.title} delay={i * 80} className={i === 0 ? "sm:col-span-2 lg:col-span-2" : ""}>
+              <div className="card card-hover h-full p-5">
+                <h3 className="text-sm font-semibold tracking-tight">{h.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-2">{h.text}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ul>
       </div>
-
-      <dl className="mt-16 divide-y divide-line border-y border-line">
-        {profile.aboutHighlights.map((h) => (
-          <div key={h.title} className="row grid gap-1 py-5 md:grid-cols-[14rem_minmax(0,1fr)] md:gap-8">
-            <dt className="font-semibold">{h.title}</dt>
-            <dd className="max-w-[40rem] text-ink-2">{h.text}</dd>
-          </div>
-        ))}
-      </dl>
-    </Section>
+    </section>
   );
 }
