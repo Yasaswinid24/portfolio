@@ -18,12 +18,12 @@ function Rag() {
       <span className="text-ink/30">→</span>
       <div className="grid w-1/4 grid-cols-4 gap-1.5">
         {Array.from({ length: 12 }).map((_, i) => (
-          <span key={i} className={`h-2 w-2 rounded-full ${i % 5 === 0 ? "bg-ink" : "bg-ink/25"}`} />
+          <span key={i} className={`h-2 w-2 rounded-full ${i % 5 === 0 ? "bg-cobalt" : "bg-ink/25"}`} />
         ))}
       </div>
       <span className="text-ink/30">→</span>
       <div className={`${box} w-1/4 p-2`}>
-        <div className="h-1.5 w-full rounded-full bg-ink" />
+        <div className="h-1.5 w-full rounded-full bg-cobalt" />
         <div className={`${bar} mt-1.5 w-full`} />
         <div className={`${bar} mt-1 w-3/4`} />
       </div>
@@ -39,7 +39,7 @@ function Evaluation() {
         <div
           key={i}
           style={{ height: `${h}%` }}
-          className={`w-6 rounded-t-md ${i === heights.length - 1 ? "bg-ink" : "bg-ink/20"}`}
+          className={`w-6 rounded-t-md ${i === heights.length - 1 ? "bg-cobalt" : "bg-ink/20"}`}
         />
       ))}
     </div>
@@ -58,7 +58,7 @@ function Copilot() {
           </div>
           <span
             className={`rounded-full px-2 py-0.5 text-[0.65rem] font-medium ${
-              i === 0 ? "bg-ink text-white" : "bg-ink/10 text-ink-2"
+              i === 0 ? "bg-cobalt text-white" : "bg-ink/10 text-ink-2"
             }`}
           >
             {r}
@@ -72,7 +72,7 @@ function Copilot() {
 function Analytics() {
   return (
     <div className="relative mx-auto h-full w-full max-w-[16rem]">
-      <div className={`${box} absolute left-1/2 top-1/2 h-10 w-16 -translate-x-1/2 -translate-y-1/2 bg-ink`} />
+      <div className={`${box} absolute left-1/2 top-1/2 h-10 w-16 -translate-x-1/2 -translate-y-1/2 bg-cobalt`} />
       {[
         "left-0 top-0",
         "right-0 top-0",
@@ -94,7 +94,7 @@ function Hmi() {
   return (
     <div className="flex h-full items-center justify-between gap-2">
       <div className={`${box} flex h-10 w-10 items-center justify-center rounded-full`}>
-        <span className="h-3 w-1.5 rounded-full bg-ink" />
+        <span className="h-3 w-1.5 rounded-full bg-cobalt" />
       </div>
       <span className="text-ink/30">→</span>
       <div className="flex flex-col gap-1.5">
@@ -102,7 +102,7 @@ function Hmi() {
           <div
             key={i}
             className={`rounded-md border px-2 py-1 text-[0.62rem] ${
-              i === 2 ? "border-ink bg-ink text-white" : "border-ink/15 bg-white text-ink-2"
+              i === 2 ? "border-cobalt bg-cobalt text-white" : "border-ink/15 bg-white text-ink-2"
             }`}
           >
             {t}
@@ -125,7 +125,7 @@ export default function ProjectVisual({ kind }: { kind: Project["visual"] }) {
   return (
     <div
       aria-hidden="true"
-      className="h-40 overflow-hidden rounded-2xl border border-line bg-[#f7f6f2] p-4 grayscale"
+      className="h-36 overflow-hidden rounded-2xl bg-wash p-4"
     >
       {kind === "rag" && <Rag />}
       {kind === "eval" && <Evaluation />}
