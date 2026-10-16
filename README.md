@@ -10,7 +10,7 @@ npm run dev      # http://localhost:3000
 npm run build    # production build
 npm start        # serve the production build
 ```
-
+Live URL.: https://portfolio-orcin-three-vlx23n3ngl.vercel.app/#home
 ## Where things live
 
 | What | Where |
